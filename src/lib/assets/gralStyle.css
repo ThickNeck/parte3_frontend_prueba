@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 16px;
+
+    /* Colores básicos */
+    --color-primary: #dc0a2d;
+    --color-secondary: #ffcb05;
+    --color-dark: #2a2a2a;
+    --color-light: #bbbbbb;
+    --color-white: #ffffff;
+    --color-shadow: rgba(0, 0, 0, 0.1);
+    --color-border: #ddd;
+    --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+
+    /* Colores de tipos */
+    --type-normal: #a8a878;
+    --type-fuego: #f08030;
+    --type-agua: #6890f0;
+    --type-planta: #78c850;
+    --type-electrico: #f8d030;
+    --type-hielo: #98d8d8;
+    --type-lucha: #c03028;
+    --type-veneno: #a040a0;
+    --type-tierra: #e0c068;
+    --type-volador: #a890f0;
+    --type-psiquico: #f85888;
+    --type-bicho: #a8b820;
+    --type-roca: #b8a038;
+    --type-fantasma: #705898;
+    --type-dragon: #7038f8;
+    --type-siniestro: #705848;
+    --type-acero: #b8b8d0;
+    --type-hada: #ee99ac;
+
+        /* Colores de categorías */
+    --category-fisico: #c92112;
+    --category-especial: #4f5870;
+    --category-estado: #8c888c;
+}
+
+/* Type colors */
+.type-Normal { background-color: var(--type-normal); }
+.type-Fuego { background-color: var(--type-fuego); }
+.type-Agua { background-color: var(--type-agua); }
+.type-Planta { background-color: var(--type-planta); }
+.type-Electrico { background-color: var(--type-electrico); color: var(--color-dark); }
+.type-Hielo { background-color: var(--type-hielo); }
+.type-Lucha { background-color: var(--type-lucha); }
+.type-Veneno { background-color: var(--type-veneno); }
+.type-Tierra { background-color: var(--type-tierra); }
+.type-Volador { background-color: var(--type-volador); }
+.type-Psiquico { background-color: var(--type-psiquico); }
+.type-Bicho { background-color: var(--type-bicho); }
+.type-Roca { background-color: var(--type-roca); }
+.type-Fantasma { background-color: var(--type-fantasma); }
+.type-Dragon { background-color: var(--type-dragon); }
+.type-Siniestro { background-color: var(--type-siniestro); }
+.type-Acero { background-color: var(--type-acero); }
+.type-Hada { background-color: var(--type-hada); }
+
+.body {
+    font-family: var(--font-main);
+    background-color: var(--color-light);
+    color: var(--color-dark);
+    line-height: 1.6;
+}

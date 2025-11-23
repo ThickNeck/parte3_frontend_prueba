@@ -1,0 +1,1 @@
+/* En este archivo estará la lógica de bpusqueda de equipo por ID */

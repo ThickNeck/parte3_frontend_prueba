@@ -1,0 +1,1 @@
+/* En este archivo se activará el endpoint para listar movimientos */

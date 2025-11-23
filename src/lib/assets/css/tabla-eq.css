@@ -1,0 +1,302 @@
+/* Main Content */
+.main-content {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Page Header */
+.page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-dark);
+}
+
+/* Actions Section */
+.actions-section {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-primary:hover {
+    background-color: #a00821;
+    transform: translateY(-0.125rem);
+    box-shadow: 0 0.25rem 0.5rem var(--color-shadow);
+}
+
+/* Table Section */
+.table-section {
+    background-color: var(--color-white);
+    border-radius: 1rem;
+    box-shadow: 0 0.25rem 0.75rem var(--color-shadow);
+    overflow: hidden;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.teams-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.teams-table thead {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+}
+
+.teams-table th {
+    padding: 1rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    text-transform: uppercase;
+    letter-spacing: 0.0313rem;
+}
+
+.teams-table tbody tr {
+    border-bottom: 0.0625rem solid var(--color-border);
+    transition: background-color 0.3s ease;
+}
+
+.teams-table tbody tr:hover {
+    background-color: #fafafa;
+}
+
+.teams-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.teams-table td {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9375rem;
+}
+
+.team-id {
+    font-weight: bold;
+    color: #999;
+}
+
+.team-name {
+    font-weight: 600;
+}
+
+.team-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.team-link:hover {
+    color: #a00821;
+    text-decoration: underline;
+}
+
+.team-members {
+    text-align: center;
+}
+
+.members-count {
+    display: inline-block;
+    padding: 0.375rem 0.875rem;
+    background-color: var(--color-light);
+    border-radius: 1rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.team-status {
+    text-align: center;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.375rem 0.875rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.0313rem;
+}
+
+.status-complete {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-incomplete {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.team-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.action-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-view {
+    background-color: #007bff;
+    color: var(--color-white);
+}
+
+.btn-view:hover {
+    background-color: #0056b3;
+}
+
+.btn-edit {
+    background-color: var(--color-warning);
+    color: var(--color-dark);
+}
+
+.btn-edit:hover {
+    background-color: #e0a800;
+}
+
+.btn-delete {
+    background-color: var(--color-danger);
+    color: var(--color-white);
+}
+
+.btn-delete:hover {
+    background-color: #bd2130;
+}
+
+@media (max-width: 48rem) {
+    .actions-section {
+        justify-content: center;
+    }
+
+    .teams-table {
+        font-size: 0.875rem;
+    }
+
+    .teams-table th,
+    .teams-table td {
+        padding: 0.75rem;
+    }
+
+    .team-actions {
+        flex-direction: column;
+    }
+
+    .action-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 30rem) {
+    .teams-table th,
+    .teams-table td {
+        padding: 0.625rem;
+    }
+
+    /* Stack table for very small screens */
+    .teams-table thead {
+        display: none;
+    }
+
+    .teams-table,
+    .teams-table tbody,
+    .teams-table tr,
+    .teams-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .teams-table tr {
+        margin-bottom: 1rem;
+        border: 0.0625rem solid var(--color-border);
+        border-radius: 0.5rem;
+        overflow: hidden;
+    }
+
+    .teams-table td {
+        text-align: left;
+        padding: 0.75rem 1rem;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    .teams-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 1rem;
+        font-weight: 600;
+        color: #666;
+    }
+
+    .team-id::before {
+        content: "ID: ";
+    }
+
+    .team-name::before {
+        content: "Nombre: ";
+    }
+
+    .team-members::before {
+        content: "Integrantes: ";
+    }
+
+    .team-status::before {
+        content: "Estado: ";
+    }
+
+    .team-actions::before {
+        content: "Acciones: ";
+    }
+
+    .team-members,
+    .team-status {
+        text-align: left;
+    }
+
+    .team-actions {
+        padding-left: 1rem;
+    }
+}
