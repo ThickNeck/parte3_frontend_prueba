@@ -1,4 +1,7 @@
 <script>
+  export let data;
+  export let form;
+
   // Variables para controlar la visibilidad de los formularios
   let showCreateForm = false;
   let showDeleteForm = false;
@@ -13,6 +16,8 @@
     showDeleteForm = !showDeleteForm;
     showCreateForm = false;  // Ocultar formulario de crear si se muestra el de eliminar
   }
+
+
 </script>
 
 <main class="main-content">
@@ -30,13 +35,14 @@
     <button class="btn btn-primary" on:click={toggleDeleteForm}>- Eliminar Equipo</button>
   </section>
 
+
   <!-- Formularios de creación y eliminación de equipo -->
   {#if showCreateForm}
     <section class="form-section">
       <h3>Crear Nuevo Equipo</h3>
-      <form>
+      <form method="POST" action="?/create">
         <label for="team-name">Nombre del Equipo</label>
-        <input type="text" id="team-name" placeholder="Nombre del equipo" required>
+        <input type="text" id="team-name" name="nombre" placeholder="Nombre del equipo" required>
         <button class="btn" type="submit">Crear Equipo</button>
       </form>
     </section>
@@ -45,9 +51,9 @@
   {#if showDeleteForm}
     <section class="form-section">
       <h3>Eliminar Equipo</h3>
-      <form>
+      <form method="POST" action="?/delete">
         <label for="team-id-delete">ID del Equipo</label>
-        <input type="number" id="team-id-delete" placeholder="ID del equipo a eliminar" required>
+        <input type="number" id="team-id-delete" name="team_id_delete" placeholder="ID del equipo a eliminar" required>
         <button class="btn" type="submit">Eliminar Equipo</button>
       </form>
     </section>
@@ -70,44 +76,31 @@
         <!-- Cuerpo -->
         <tbody>
           <!-- Por cada equipo cargado, se inyecta un tr -->
-          <tr>
-            <td class="team-id">#001</td>
-            <td class="team-name">
-              <a href="equipo-detalle.html?id=1" class="team-link"
-                >Equipo Fuego</a
-              >
-            </td>
-            <td class="team-members">
-              <span class="members-count">6 integ.</span>
-            </td>
-            <td class="team-status">
-              <span class="status-badge status-complete">Completo</span>
-            </td>
-            <td class="team-actions">
-              <a href="equipo-detalle.html?id=1" class="action-btn btn-view"
-                >Ver</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td class="team-id">#002</td>
-            <td class="team-name">
-              <a href="equipo-detalle.html?id=2" class="team-link"
-                >Equipo Agua</a
-              >
-            </td>
-            <td class="team-members">
-              <span class="members-count">4 integ.</span>
-            </td>
-            <td class="team-status">
-              <span class="status-badge status-incomplete">Incompleto</span>
-            </td>
-            <td class="team-actions">
-              <a href="equipo-detalle.html?id=2" class="action-btn btn-view"
-                >Ver</a
-              >
-            </td>
-          </tr>
+          {#each data.equipos as equipo}
+            <tr>
+              <td class="team-id">#{equipo.id}</td>
+              <td class="team-name">
+                <a href="/tabla-eq/{equipo.id}" class="team-link"
+                  >{equipo.nombre}</a
+                >
+              </td>
+              <td class="team-members">
+                <span class="members-count">{equipo.integrantes.length} integ.</span>
+              </td>
+              <td class="team-status">
+                {#if equipo.integrantes && equipo.integrantes.length === 6}
+                  <span class="status-badge status-complete">Completo</span>
+                {:else}
+                  <span class="status-badge status-complete">Incompleto</span>
+                {/if}
+              </td>
+              <td class="team-actions">
+                <a href="/tabla-eq/{equipo.id}" class="action-btn btn-view"
+                  >Ver</a
+                >
+              </td>
+            </tr>
+          {/each}
         </tbody>
       </table>
     </div>
