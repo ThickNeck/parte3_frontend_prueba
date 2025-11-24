@@ -3,7 +3,7 @@
 import { error } from "@sveltejs/kit";
 
 export async function load({ params }) {
-  let url = new URL(`http://localhost:8000/grupos/${params.id}`);
+  let url = new URL(`http://localhost:8000/api/pokemon/${params.id}`);
   const response = await fetch(url);
   if (!response.ok) {
     error(response.status);
