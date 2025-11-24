@@ -173,7 +173,7 @@
                     >{mov_maq.nombre}</a
                   ></td
                 >
-                <td><span class="type-badge type-veneno">{mov_maq.nombre}</span></td>
+                <td><span class="type-badge type-{mov_maq.tipo.nombre}">{mov_maq.tipo.nombre}</span></td>
                 <td>{mov_maq.categoria}</td>
                 <td>{mov_maq.potencia}</td>
                 <td>{mov_maq.precision}</td>
