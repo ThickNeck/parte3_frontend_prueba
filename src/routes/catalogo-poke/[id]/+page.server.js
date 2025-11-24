@@ -1,18 +1,18 @@
 /* Aquí entrará el el endpoint BUSCAR POKÉMON POR ID. */
 /**/
-export async function load(id) {
-    let url = new URL(`http://localhost:8000/api/pokemon/${id}`)
+import { error } from "@sveltejs/kit";
 
-    const response = await fetch(url);
-    
-    if (!response.ok) {
-        error(`Response status: ${response.status}`);
-        return;
-    }
+export async function load({ params }) {
+  let url = new URL(`http://localhost:8000/grupos/${params.id}`);
+  const response = await fetch(url);
+  if (!response.ok) {
+    error(response.status);
+  }
 
-    let pokemon = await response.json();
+  let pokemon = await response.json();
 
-    return {
-        pokemon
-    };
+  return {
+    pokemon
+  };
 }
+
