@@ -1,41 +1,11 @@
 <script>
-  import { onMount } from 'svelte';
-  let { id } = $props(); // ID del Pokémon, que se pasará como prop
-
-  let pokemon = null;
-  let loading = true;
-  let errorMessage = null;
-
-  // Función para cargar los datos del Pokémon por su ID
-  async function loadPokemon(id) {
-    try {
-      let url = new URL(`http://localhost:8000/api/pokemon/${id}`);
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`Error al cargar los datos del Pokémon: ${response.status}`);
-      }
-      pokemon = await response.json();
-      loading = false;
-    } catch (error) {
-      errorMessage = error.message;
-      loading = false;
-    }
-  }
-
-  // Cargar los datos al montar el componente
-  onMount(() => {
-    loadPokemon(id); // Llamamos a la función con el ID actual
-  });
+  let { data } = $props();
 </script>
 
 <main class="main-content">
   <p style="color: red;">NOTA: En esta página se activará el endpoint BUSCAR POKEMON POD ID</p>
-  {#if loading}
-    <p>Cargando...</p>
-  {:else if errorMessage}
-    <p style="color: red;">{errorMessage}</p>
-  {:else}
   <!-- Agrupación: imagen + datos pokédex + stats -->
+  {#if data.pokemon}
   <section class="pokemon-top">
     <!-- Sección Header -->
     <section class="pokemon-header">
@@ -390,7 +360,7 @@
       </div>
     </div>
   </section>
-{/if}
+  {/if}
 </main>
 
 <style>

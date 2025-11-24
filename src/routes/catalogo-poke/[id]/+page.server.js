@@ -1,5 +1,5 @@
 /* Aquí entrará el el endpoint BUSCAR POKÉMON POR ID. */
-/*
+/**/
 export async function load(id) {
     let url = new URL(`http://localhost:8000/api/pokemon/${id}`)
 
@@ -16,4 +16,3 @@ export async function load(id) {
         pokemon
     };
 }
-*/
