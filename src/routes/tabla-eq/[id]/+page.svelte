@@ -538,10 +538,6 @@
       </div>
     </article>
   </section>
-  <!-- Botón eliminar -->
-  <div class="delete-team-wrapper">
-    <button class="btn-delete-team">Eliminar equipo</button>
-  </div>
 </main>
 
 <style>

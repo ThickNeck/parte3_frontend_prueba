@@ -26,6 +26,7 @@
 .actions-section {
     margin-bottom: 2rem;
     display: flex;
+    gap: 1rem;
     justify-content: flex-end;
 }
 
