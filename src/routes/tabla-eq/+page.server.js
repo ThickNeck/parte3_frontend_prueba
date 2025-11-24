@@ -54,3 +54,71 @@ export async function load({ url, fetch }) {
         page // Devolvemos la página actual para los controles de navegación
     };
 }
+
+export const actions = {
+    // ===================================
+    // ACCIÓN PARA CREAR UN EQUIPO
+    // ===================================
+    create: async ({ request }) => {
+        // 1. Obtener los datos del formulario
+        const data = await request.formData();
+        const nombre = data.get("nombre");
+
+        if (!nombre) {
+            // Retorna un error de SvelteKit si el campo está vacío
+            return fail(400, { create: { success: false, message: 'El nombre del equipo es requerido.' } });
+        }
+
+        let url = new URL("http://127.0.0.1:8000/api/equipos");
+        
+        // 2. Enviar la solicitud POST a la API
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nombre: nombre })
+        });
+        
+        // 3. Manejo de respuesta
+        if (!response.ok) {
+            const apiError = await response.json().catch(() => ({ message: 'Error desconocido.' }));
+            // Lanza un error de SvelteKit si la API falla
+            throw error(response.status, `Error al crear el equipo: ${apiError.message || response.statusText}`);
+        }
+
+        // Retorna éxito (opcional, pero útil para feedback)
+        return { create: { success: true, message: `Equipo "${nombre}" creado con éxito.` } };
+    },
+
+    // ===================================
+    // NUEVA ACCIÓN PARA ELIMINAR UN EQUIPO
+    // ===================================
+    delete: async ({ request }) => {
+        // 1. Obtener los datos del formulario
+        const data = await request.formData();
+        // Usamos "team_id_delete" para que coincida con el atributo 'name' del input del formulario
+        const teamId = data.get("team_id_delete"); 
+
+        if (!teamId) {
+            return fail(400, { delete: { success: false, message: 'El ID del equipo es requerido.' } });
+        }
+
+        // 2. Construir la URL con el ID para la eliminación
+        let url = new URL(`http://127.0.0.1:8000/api/equipos/${teamId}`);
+
+        // 3. Enviar la solicitud DELETE a la API
+        const response = await fetch(url, {
+            method: 'DELETE',
+            // No se necesita Content-Type ni body para una solicitud DELETE simple.
+        });
+
+        // 4. Manejo de respuesta
+        if (response.status === 404) {
+             throw error(404, 'El equipo con ese ID no fue encontrado.');
+        } else if (!response.ok) {
+            throw error(response.status, `Error al intentar eliminar el equipo. Código: ${response.status}`);
+        }
+        
+        // Retorna éxito
+        return { delete: { success: true, message: `Equipo ID ${teamId} eliminado con éxito.` } };
+    }
+};

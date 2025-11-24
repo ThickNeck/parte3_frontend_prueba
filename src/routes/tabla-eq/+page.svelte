@@ -1,5 +1,6 @@
 <script>
-  let { data } = $props();
+  export let data;
+  export let form;
 
   // Variables para controlar la visibilidad de los formularios
   let showCreateForm = false;
@@ -15,6 +16,8 @@
     showDeleteForm = !showDeleteForm;
     showCreateForm = false;  // Ocultar formulario de crear si se muestra el de eliminar
   }
+
+
 </script>
 
 <main class="main-content">
@@ -32,13 +35,14 @@
     <button class="btn btn-primary" on:click={toggleDeleteForm}>- Eliminar Equipo</button>
   </section>
 
+
   <!-- Formularios de creación y eliminación de equipo -->
   {#if showCreateForm}
     <section class="form-section">
       <h3>Crear Nuevo Equipo</h3>
-      <form>
+      <form method="POST" action="?/create">
         <label for="team-name">Nombre del Equipo</label>
-        <input type="text" id="team-name" placeholder="Nombre del equipo" required>
+        <input type="text" id="team-name" name="nombre" placeholder="Nombre del equipo" required>
         <button class="btn" type="submit">Crear Equipo</button>
       </form>
     </section>
@@ -47,9 +51,9 @@
   {#if showDeleteForm}
     <section class="form-section">
       <h3>Eliminar Equipo</h3>
-      <form>
+      <form method="POST" action="?/delete">
         <label for="team-id-delete">ID del Equipo</label>
-        <input type="number" id="team-id-delete" placeholder="ID del equipo a eliminar" required>
+        <input type="number" id="team-id-delete" name="team_id_delete" placeholder="ID del equipo a eliminar" required>
         <button class="btn" type="submit">Eliminar Equipo</button>
       </form>
     </section>
