@@ -59,7 +59,7 @@
 
         {#each data.movimientos as movimiento}
             <article class="move-card">
-                <a href="/{movimiento.id}" class="move-link">
+                <a href="catalogo-mov/{movimiento.id}" class="move-link">
                     <div class="move-header">
                         <div class="move-id">#{movimiento.id}</div>
                         <span class="category-badge category-{movimiento.categoria}">{movimiento.categoria}</span>

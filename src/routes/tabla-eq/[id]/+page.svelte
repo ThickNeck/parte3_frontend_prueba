@@ -1,3 +1,8 @@
+<script>
+  let { data } = $props();
+  let equipo = data.equipo;
+  
+</script>
 <main class="main-content">
   <!-- Header Equipo -->
   <section class="team-header">

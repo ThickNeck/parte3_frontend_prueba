@@ -67,7 +67,7 @@
     <!-- Por cada pokémon cargado, se inyectará una nueva Card -->
     {#each data.pokemones as pokemon}
       <article class="pokemon-card">
-        <a href="/{pokemon.id}" class="pokemon-link">
+        <a href="/catalogo-poke/{pokemon.id}"class="pokemon-link">
           <div class="pokemon-header">
             <div class="pokemon-id">#{pokemon.id}</div>
           </div>

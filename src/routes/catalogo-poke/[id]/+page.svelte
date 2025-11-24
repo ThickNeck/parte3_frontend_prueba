@@ -135,7 +135,7 @@
             {#each pokemon.movimientos_nivel as mov_niv}
               <tr>
                 <td
-                  ><a href="././catalogo-mov/{mov_niv.id}" class="move-link"
+                  ><a href="/catalogo-mov/{mov_niv.id}" class="move-link"
                     >{mov_niv.nombre}</a
                   ></td
                 >
@@ -169,7 +169,7 @@
             {#each pokemon.movimientos_maquina as mov_maq}
               <tr>
                 <td
-                  ><a href="././catalogo-mov/{mov_maq.id}" class="move-link"
+                  ><a href="/catalogo-mov/{mov_maq.id}" class="move-link"
                     >{mov_maq.nombre}</a
                   ></td
                 >
@@ -202,7 +202,7 @@
             {#each pokemon.movimientos_huevo as mov_egg}
               <tr>
                 <td
-                  ><a href="././catalogo-mov/{mov_egg.id}" class="move-link"
+                  ><a href="/catalogo-mov/{mov_egg.id}" class="move-link"
                     >{mov_egg.nombre}</a
                   ></td
                 >

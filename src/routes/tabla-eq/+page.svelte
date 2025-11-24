@@ -1,4 +1,6 @@
 <script>
+  let { data } = $props();
+
   // Variables para controlar la visibilidad de los formularios
   let showCreateForm = false;
   let showDeleteForm = false;
@@ -70,44 +72,31 @@
         <!-- Cuerpo -->
         <tbody>
           <!-- Por cada equipo cargado, se inyecta un tr -->
-          <tr>
-            <td class="team-id">#001</td>
-            <td class="team-name">
-              <a href="equipo-detalle.html?id=1" class="team-link"
-                >Equipo Fuego</a
-              >
-            </td>
-            <td class="team-members">
-              <span class="members-count">6 integ.</span>
-            </td>
-            <td class="team-status">
-              <span class="status-badge status-complete">Completo</span>
-            </td>
-            <td class="team-actions">
-              <a href="equipo-detalle.html?id=1" class="action-btn btn-view"
-                >Ver</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td class="team-id">#002</td>
-            <td class="team-name">
-              <a href="equipo-detalle.html?id=2" class="team-link"
-                >Equipo Agua</a
-              >
-            </td>
-            <td class="team-members">
-              <span class="members-count">4 integ.</span>
-            </td>
-            <td class="team-status">
-              <span class="status-badge status-incomplete">Incompleto</span>
-            </td>
-            <td class="team-actions">
-              <a href="equipo-detalle.html?id=2" class="action-btn btn-view"
-                >Ver</a
-              >
-            </td>
-          </tr>
+          {#each data.equipos as equipo}
+            <tr>
+              <td class="team-id">#{equipo.id}</td>
+              <td class="team-name">
+                <a href="/tabla-eq/{equipo.id}" class="team-link"
+                  >{equipo.nombre}</a
+                >
+              </td>
+              <td class="team-members">
+                <span class="members-count">{equipo.integrantes.length} integ.</span>
+              </td>
+              <td class="team-status">
+                {#if equipo.integrantes && equipo.integrantes.length === 6}
+                  <span class="status-badge status-complete">Completo</span>
+                {:else}
+                  <span class="status-badge status-complete">Incompleto</span>
+                {/if}
+              </td>
+              <td class="team-actions">
+                <a href="/tabla-eq/{equipo.id}" class="action-btn btn-view"
+                  >Ver</a
+                >
+              </td>
+            </tr>
+          {/each}
         </tbody>
       </table>
     </div>
