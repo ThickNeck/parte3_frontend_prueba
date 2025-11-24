@@ -1,3 +1,7 @@
+<script>
+  let { data } = $props();
+  import Pagination from "$lib/components/Pagination2.svelte";
+</script>
 <main class="main-content">
 
     <!-- Sección Header -->
@@ -143,22 +147,11 @@
         </article>
     </section>
 
-    <!-- Paginación -->
-    <div class="pagination">
-        <a href="#" class="pagination-btn pagination-prev" aria-label="Página anterior">
-            <span>←</span>
-        </a>
-        <a href="#" class="pagination-link pagination-active">1</a>
-        <a href="#" class="pagination-link">2</a>
-        <a href="#" class="pagination-link">3</a>
-        <a href="#" class="pagination-link">4</a>
-        <a href="#" class="pagination-link">5</a>
-        <span class="pagination-dots">...</span>
-        <a href="#" class="pagination-link">50</a>
-        <a href="#" class="pagination-btn pagination-next" aria-label="Página siguiente">
-            <span>→</span>
-        </a>
-    </div>
+    <!-- Paginación: Utilizamos data.page que es el nombre devuelto por load -->
+  <Pagination
+    currentPage={data.page}
+    hasMore={data.hasMore}
+  />
 </main>
 
 <style>
