@@ -66,7 +66,9 @@
                     </div>
                     <h3 class="move-name">{movimiento.nombre}</h3>
                     <div class="move-type">
-                        <span class="type-badge type-normal">{movimiento.tipo}</span>
+                        {#if movimiento.tipo}
+                            <span class="type-badge type-{movimiento.tipo.nombre}">{movimiento.tipo.nombre}</span>
+                        {/if}
                     </div>
                     <p class="move-description">{movimiento.efecto}</p>
                 </a>

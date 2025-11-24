@@ -1,16 +1,57 @@
+<script>
+  // Variables para controlar la visibilidad de los formularios
+  let showCreateForm = false;
+  let showDeleteForm = false;
+
+  // Funciones para mostrar y ocultar formularios
+  function toggleCreateForm() {
+    showCreateForm = !showCreateForm;
+    showDeleteForm = false;  // Ocultar formulario de eliminar si se muestra el de crear
+  }
+
+  function toggleDeleteForm() {
+    showDeleteForm = !showDeleteForm;
+    showCreateForm = false;  // Ocultar formulario de crear si se muestra el de eliminar
+  }
+</script>
+
 <main class="main-content">
   <!-- Sección Header -->
   <section class="page-header">
     <h2 class="page-title">Gestión de Equipos</h2>
     <p class="page-subtitle">Organiza y administra tus equipos Pokémon</p>
     <p style="color: red;">NOTA: En esta página se activará el endpoint LISTAR EQUIPOS.</p><br>
-    <p style="color: red;">También se podrá activar el endpoint CREAR EQUIPO.</p>
+    <p style="color: red;">También se podrá activar el endpoint CREAR EQUIPO y ELIMINAR EQUIPO.</p>
   </section>
 
-  <!-- Botón crear -->
+  <!-- Botones -->
   <section class="actions-section">
-    <button class="btn btn-primary">+ Crear Nuevo Equipo</button>
+    <button class="btn btn-primary" on:click={toggleCreateForm}>+ Crear Nuevo Equipo</button>
+    <button class="btn btn-primary" on:click={toggleDeleteForm}>- Eliminar Equipo</button>
   </section>
+
+  <!-- Formularios de creación y eliminación de equipo -->
+  {#if showCreateForm}
+    <section class="form-section">
+      <h3>Crear Nuevo Equipo</h3>
+      <form>
+        <label for="team-name">Nombre del Equipo</label>
+        <input type="text" id="team-name" placeholder="Nombre del equipo" required>
+        <button class="btn" type="submit">Crear Equipo</button>
+      </form>
+    </section>
+  {/if}
+
+  {#if showDeleteForm}
+    <section class="form-section">
+      <h3>Eliminar Equipo</h3>
+      <form>
+        <label for="team-id-delete">ID del Equipo</label>
+        <input type="number" id="team-id-delete" placeholder="ID del equipo a eliminar" required>
+        <button class="btn" type="submit">Eliminar Equipo</button>
+      </form>
+    </section>
+  {/if}
 
   <!-- Tabla equipos -->
   <section class="table-section">
@@ -67,124 +108,12 @@
               >
             </td>
           </tr>
-          <tr>
-            <td class="team-id">#003</td>
-            <td class="team-name">
-              <a href="equipo-detalle.html?id=3" class="team-link"
-                >Equipo Planta</a
-              >
-            </td>
-            <td class="team-members">
-              <span class="members-count">6 integ.</span>
-            </td>
-            <td class="team-status">
-              <span class="status-badge status-complete">Completo</span>
-            </td>
-            <td class="team-actions">
-              <a href="equipo-detalle.html?id=3" class="action-btn btn-view"
-                >Ver</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td class="team-id">#004</td>
-            <td class="team-name">
-              <a href="equipo-detalle.html?id=4" class="team-link"
-                >Equipo Eléctrico</a
-              >
-            </td>
-            <td class="team-members">
-              <span class="members-count">3 integ.</span>
-            </td>
-            <td class="team-status">
-              <span class="status-badge status-incomplete">Incompleto</span>
-            </td>
-            <td class="team-actions">
-              <a href="equipo-detalle.html?id=4" class="action-btn btn-view"
-                >Ver</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td class="team-id">#005</td>
-            <td class="team-name">
-              <a href="equipo-detalle.html?id=5" class="team-link"
-                >Equipo Competitivo</a
-              >
-            </td>
-            <td class="team-members">
-              <span class="members-count">6 integ.</span>
-            </td>
-            <td class="team-status">
-              <span class="status-badge status-complete">Completo</span>
-            </td>
-            <td class="team-actions">
-              <a href="equipo-detalle.html?id=5" class="action-btn btn-view"
-                >Ver</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td class="team-id">#006</td>
-            <td class="team-name">
-              <a href="equipo-detalle.html?id=6" class="team-link"
-                >Equipo Legendarios</a
-              >
-            </td>
-            <td class="team-members">
-              <span class="members-count">2 integ.</span>
-            </td>
-            <td class="team-status">
-              <span class="status-badge status-incomplete">Incompleto</span>
-            </td>
-            <td class="team-actions">
-              <a href="equipo-detalle.html?id=6" class="action-btn btn-view"
-                >Ver</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td class="team-id">#007</td>
-            <td class="team-name">
-              <a href="equipo-detalle.html?id=7" class="team-link"
-                >Equipo Dragón</a
-              >
-            </td>
-            <td class="team-members">
-              <span class="members-count">5 integ.</span>
-            </td>
-            <td class="team-status">
-              <span class="status-badge status-incomplete">Incompleto</span>
-            </td>
-            <td class="team-actions">
-              <a href="equipo-detalle.html?id=7" class="action-btn btn-view"
-                >Ver</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td class="team-id">#008</td>
-            <td class="team-name">
-              <a href="equipo-detalle.html?id=8" class="team-link"
-                >Equipo Psíquico</a
-              >
-            </td>
-            <td class="team-members">
-              <span class="members-count">1 integ.</span>
-            </td>
-            <td class="team-status">
-              <span class="status-badge status-incomplete">Incompleto</span>
-            </td>
-            <td class="team-actions">
-              <a href="equipo-detalle.html?id=8" class="action-btn btn-view"
-                >Ver</a
-              >
-            </td>
-          </tr>
         </tbody>
       </table>
     </div>
   </section>
+
+  
 </main>
 
 <style>
