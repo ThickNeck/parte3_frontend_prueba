@@ -5,7 +5,7 @@
 }
 
 :root {
-    font-size: 16px;
+    font-size: 1rem;
 
     /* Colores básicos */
     --color-primary: #dc0a2d;
@@ -48,17 +48,17 @@
 .type-Fuego { background-color: var(--type-fuego); }
 .type-Agua { background-color: var(--type-agua); }
 .type-Planta { background-color: var(--type-planta); }
-.type-Electrico { background-color: var(--type-electrico); color: var(--color-dark); }
+.type-Eléctrico { background-color: var(--type-electrico); color: var(--color-dark); }
 .type-Hielo { background-color: var(--type-hielo); }
 .type-Lucha { background-color: var(--type-lucha); }
 .type-Veneno { background-color: var(--type-veneno); }
 .type-Tierra { background-color: var(--type-tierra); }
 .type-Volador { background-color: var(--type-volador); }
-.type-Psiquico { background-color: var(--type-psiquico); }
+.type-Psíquico { background-color: var(--type-psiquico); }
 .type-Bicho { background-color: var(--type-bicho); }
 .type-Roca { background-color: var(--type-roca); }
 .type-Fantasma { background-color: var(--type-fantasma); }
-.type-Dragon { background-color: var(--type-dragon); }
+.type-Dragón { background-color: var(--type-dragon); }
 .type-Siniestro { background-color: var(--type-siniestro); }
 .type-Acero { background-color: var(--type-acero); }
 .type-Hada { background-color: var(--type-hada); }
