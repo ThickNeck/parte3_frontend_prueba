@@ -4,7 +4,7 @@
   let stat = pokemon.estadisticas;
   let sumaStat = 0;
   for (let estadistica in stat) {
-    sumaStat+=estadistica
+    sumaStat+=stat[estadistica]
   }
   
 </script>
@@ -124,7 +124,6 @@
         <table class="moves-table">
           <thead>
             <tr>
-              <th>Nivel</th>
               <th>Movimiento</th>
               <th>Tipo</th>
               <th>Categoría</th>
@@ -135,13 +134,12 @@
           <tbody>
             {#each pokemon.movimientos_nivel as mov_niv}
               <tr>
-                <td>{mov_niv.id}</td>
                 <td
                   ><a href="././catalogo-mov/{mov_niv.id}" class="move-link"
                     >{mov_niv.nombre}</a
                   ></td
                 >
-                <td><span class="type-badge type-{mov_niv.tipo}">{mov_niv.tipo}</span></td>
+                <td><span class="type-badge type-{mov_niv.tipo.nombre}">{mov_niv.tipo.nombre}</span></td>
                 <td>{mov_niv.categoria}</td>
                 <td>{mov_niv.potencia}</td>
                 <td>{mov_niv.precision}</td>
@@ -160,7 +158,6 @@
         <table class="moves-table">
           <thead>
             <tr>
-              <th>MT/MO</th>
               <th>Movimiento</th>
               <th>Tipo</th>
               <th>Categoría</th>
@@ -169,54 +166,19 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>MT06</td>
-              <td
-                ><a href="movimiento-detalle.html?id=92" class="move-link"
-                  >Tóxico</a
-                ></td
-              >
-              <td><span class="type-badge type-veneno">Veneno</span></td>
-              <td>Estado</td>
-              <td>—</td>
-              <td>90</td>
-            </tr>
-            <tr>
-              <td>MT10</td>
-              <td
-                ><a href="movimiento-detalle.html?id=91" class="move-link"
-                  >Poder Oculto</a
-                ></td
-              >
-              <td><span class="type-badge type-normal">Normal</span></td>
-              <td>Especial</td>
-              <td>60</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>MT11</td>
-              <td
-                ><a href="movimiento-detalle.html?id=241" class="move-link"
-                  >Día Soleado</a
-                ></td
-              >
-              <td><span class="type-badge type-fuego">Fuego</span></td>
-              <td>Estado</td>
-              <td>—</td>
-              <td>—</td>
-            </tr>
-            <tr>
-              <td>MT22</td>
-              <td
-                ><a href="movimiento-detalle.html?id=76" class="move-link"
-                  >Rayo Solar</a
-                ></td
-              >
-              <td><span class="type-badge type-planta">Planta</span></td>
-              <td>Especial</td>
-              <td>120</td>
-              <td>100</td>
-            </tr>
+            {#each pokemon.movimientos_maquina as mov_maq}
+              <tr>
+                <td
+                  ><a href="././catalogo-mov/{mov_maq.id}" class="move-link"
+                    >{mov_maq.nombre}</a
+                  ></td
+                >
+                <td><span class="type-badge type-veneno">{mov_maq.nombre}</span></td>
+                <td>{mov_maq.categoria}</td>
+                <td>{mov_maq.potencia}</td>
+                <td>{mov_maq.precision}</td>
+              </tr>              
+            {/each}
           </tbody>
         </table>
       </div>
@@ -237,50 +199,20 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td
-                ><a href="movimiento-detalle.html?id=14" class="move-link"
-                  >Malicioso</a
-                ></td
-              >
-              <td><span class="type-badge type-normal">Normal</span></td>
-              <td>Estado</td>
-              <td>—</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td
-                ><a href="movimiento-detalle.html?id=79" class="move-link"
-                  >Megaagotar</a
-                ></td
-              >
-              <td><span class="type-badge type-planta">Planta</span></td>
-              <td>Especial</td>
-              <td>40</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td
-                ><a href="movimiento-detalle.html?id=235" class="move-link"
-                  >Síntesis</a
-                ></td
-              >
-              <td><span class="type-badge type-planta">Planta</span></td>
-              <td>Estado</td>
-              <td>—</td>
-              <td>—</td>
-            </tr>
-            <tr>
-              <td
-                ><a href="movimiento-detalle.html?id=388" class="move-link"
-                  >Bomba Germen</a
-                ></td
-              >
-              <td><span class="type-badge type-planta">Planta</span></td>
-              <td>Físico</td>
-              <td>80</td>
-              <td>100</td>
-            </tr>
+            {#each pokemon.movimientos_huevo as mov_egg}
+              <tr>
+                <td
+                  ><a href="././catalogo-mov/{mov_egg.id}" class="move-link"
+                    >{mov_egg.nombre}</a
+                  ></td
+                >
+                <td><span class="type-badge type-{mov_egg.tipo.nombre}">{mov_egg.tipo.nombre}</span></td>
+                <td>{mov_egg.categoria}</td>
+                <td>{mov_egg.potencia}</td>
+                <td>{mov_egg.precision}</td>
+              </tr>              
+            {/each}
+
           </tbody>
         </table>
       </div>
