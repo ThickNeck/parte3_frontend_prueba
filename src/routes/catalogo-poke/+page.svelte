@@ -1,6 +1,6 @@
 <script>
   let { data } = $props();
-  import Pagination from "$lib/components/Pagination.svelte";
+  import Pagination from "$lib/components/Pagination2.svelte";
 </script>
 
 <main class="main-content">
@@ -89,10 +89,9 @@
     {/each}
   </section>
 
-  <!-- Paginación -->
+  <!-- Paginación: Utilizamos data.page que es el nombre devuelto por load -->
   <Pagination
-    currentPage={data.currentPage}
-    pageSize={data.pageSize}
+    currentPage={data.page}
     hasMore={data.hasMore}
   />
 </main>
