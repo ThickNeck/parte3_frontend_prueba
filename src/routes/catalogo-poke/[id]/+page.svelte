@@ -1,3 +1,14 @@
+<script>
+  let { data } = $props();
+  let pokemon = data.pokemon;
+  let stat = pokemon.estadisticas;
+  let sumaStat = 0;
+  for (let estadistica in stat) {
+    sumaStat+=stat[estadistica]
+  }
+  
+</script>
+
 <main class="main-content">
   <p style="color: red;">NOTA: En esta página se activará el endpoint BUSCAR POKEMON POD ID</p>
   <!-- Agrupación: imagen + datos pokédex + stats -->
@@ -5,17 +16,18 @@
     <!-- Sección Header -->
     <section class="pokemon-header">
       <div class="pokemon-header-left">
-        <h2 class="pokemon-title">Bulbasaur</h2>
-        <div class="pokemon-number">#001</div>
+        <h2 class="pokemon-title">{pokemon.name}</h2>
+        <div class="pokemon-number">#{pokemon.id}</div>
         <div class="pokemon-types">
-          <span class="type-badge type-planta">Planta</span>
-          <span class="type-badge type-veneno">Veneno</span>
+          {#each pokemon.tipos as tipo}
+            <span class="type-badge type-{tipo.nombre}">{tipo.nombre}</span>
+          {/each}
         </div>
       </div>
       <div class="pokemon-header-right">
         <img
-          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
-          alt="Bulbasaur"
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{pokemon.id}.png"
+          alt="{pokemon.nombre}"
           class="pokemon-main-image"
         />
       </div>
@@ -26,38 +38,16 @@
       <h3 class="section-title">Datos Pokédex</h3>
       <div class="pokedex-data">
         <div class="data-row">
-          <span class="data-label">Especie:</span><span class="data-value"
-            >Pokémon Semilla</span
-          >
-        </div>
-        <div class="data-row">
           <span class="data-label">Altura:</span><span class="data-value"
-            >0.7 m</span
+            >{pokemon.altura} m</span
           >
         </div>
         <div class="data-row">
           <span class="data-label">Peso:</span><span class="data-value"
-            >6.9 kg</span
-          >
-        </div>
-        <div class="data-row">
-          <span class="data-label">Habilidades:</span><span class="data-value"
-            >Espesura, Clorofila (oculta)</span
-          >
-        </div>
-        <div class="data-row">
-          <span class="data-label">Grupo Huevo:</span><span class="data-value"
-            >Monstruo, Planta</span
-          >
-        </div>
-        <div class="data-row">
-          <span class="data-label">Género:</span><span class="data-value"
-            >87.5% ♂ / 12.5% ♀</span
+            >{pokemon.peso} kg</span
           >
         </div>
       </div>
-
-      
     </section>
 
     <!-- Base Stats -->
@@ -65,34 +55,34 @@
       <h3 class="section-title">Estadísticas Base</h3>
       <div class="stats-container">
         <div class="stat-row">
-          <span class="stat-name">PS</span><span class="stat-value">45</span>
+          <span class="stat-name">PS</span><span class="stat-value">{stat.puntos_de_golpe}</span>
         </div>
         <div class="stat-row">
-          <span class="stat-name">Ataque</span><span class="stat-value">49</span
+          <span class="stat-name">Ataque</span><span class="stat-value">{stat.ataque}</span
           >
         </div>
         <div class="stat-row">
           <span class="stat-name">Defensa</span><span class="stat-value"
-            >49</span
+            >{stat.defensa}</span
           >
         </div>
         <div class="stat-row">
           <span class="stat-name">At. Esp.</span><span class="stat-value"
-            >65</span
+            >{stat.ataque_especial}</span
           >
         </div>
         <div class="stat-row">
           <span class="stat-name">Def. Esp.</span><span class="stat-value"
-            >65</span
+            >{stat.defensa_especial}</span
           >
         </div>
         <div class="stat-row">
           <span class="stat-name">Velocidad</span><span class="stat-value"
-            >45</span
+            >{stat.velocidad}</span
           >
         </div>
         <div class="stat-row stat-total">
-          <span class="stat-name">Total</span><span class="stat-value">318</span
+          <span class="stat-name">Total</span><span class="stat-value">{sumaStat}</span
           >
         </div>
       </div>
@@ -106,32 +96,18 @@
     <div class="info-section evolution-box">
       <h3 class="section-title">Cadena Evolutiva</h3>
       <div class="evolution-chain">
-        <div class="evolution-item">
-          <img
-            alt="Bulbasaur"
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
-            class="evolution-image"
-          />
-          <span class="evolution-name">Bulbasaur</span>
-        </div>
-        <div class="evolution-arrow">→</div>
-        <div class="evolution-item">
-          <img
-            alt="Ivysaur"
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png"
-            class="evolution-image"
-          />
-          <span class="evolution-name">Ivysaur</span>
-        </div>
-        <div class="evolution-arrow">→</div>
-        <div class="evolution-item">
-          <img
-            alt="Venusaur"
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"
-            class="evolution-image"
-          />
-          <span class="evolution-name">Venusaur</span>
-        </div>
+        {#each pokemon.evoluciones as evolucion}
+          <div class="evolution-item">
+            <div class="evolution-arrow">→</div>
+            <img
+              alt="{evolucion.nombre}"
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{evolucion.id}.png"
+              class="evolution-image"
+            />
+            <span class="evolution-name">{evolucion.nombre}</span>
+          </div>          
+        {/each}
+
       </div>
     </div>
   </section>
@@ -148,7 +124,6 @@
         <table class="moves-table">
           <thead>
             <tr>
-              <th>Nivel</th>
               <th>Movimiento</th>
               <th>Tipo</th>
               <th>Categoría</th>
@@ -157,66 +132,20 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td
-                ><a href="movimiento-detalle.html?id=33" class="move-link"
-                  >Placaje</a
-                ></td
-              >
-              <td><span class="type-badge type-normal">Normal</span></td>
-              <td>Físico</td>
-              <td>40</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td
-                ><a href="movimiento-detalle.html?id=45" class="move-link"
-                  >Gruñido</a
-                ></td
-              >
-              <td><span class="type-badge type-normal">Normal</span></td>
-              <td>Estado</td>
-              <td>—</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td
-                ><a href="movimiento-detalle.html?id=71" class="move-link"
-                  >Drenadoras</a
-                ></td
-              >
-              <td><span class="type-badge type-planta">Planta</span></td>
-              <td>Especial</td>
-              <td>20</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>9</td>
-              <td
-                ><a href="movimiento-detalle.html?id=77" class="move-link"
-                  >Látigo Cepa</a
-                ></td
-              >
-              <td><span class="type-badge type-planta">Planta</span></td>
-              <td>Físico</td>
-              <td>45</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>13</td>
-              <td
-                ><a href="movimiento-detalle.html?id=22" class="move-link"
-                  >Polvo Veneno</a
-                ></td
-              >
-              <td><span class="type-badge type-veneno">Veneno</span></td>
-              <td>Estado</td>
-              <td>—</td>
-              <td>75</td>
-            </tr>
+            {#each pokemon.movimientos_nivel as mov_niv}
+              <tr>
+                <td
+                  ><a href="././catalogo-mov/{mov_niv.id}" class="move-link"
+                    >{mov_niv.nombre}</a
+                  ></td
+                >
+                <td><span class="type-badge type-{mov_niv.tipo.nombre}">{mov_niv.tipo.nombre}</span></td>
+                <td>{mov_niv.categoria}</td>
+                <td>{mov_niv.potencia}</td>
+                <td>{mov_niv.precision}</td>
+              </tr>              
+            {/each}
+
           </tbody>
         </table>
       </div>
@@ -229,7 +158,6 @@
         <table class="moves-table">
           <thead>
             <tr>
-              <th>MT/MO</th>
               <th>Movimiento</th>
               <th>Tipo</th>
               <th>Categoría</th>
@@ -238,54 +166,19 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>MT06</td>
-              <td
-                ><a href="movimiento-detalle.html?id=92" class="move-link"
-                  >Tóxico</a
-                ></td
-              >
-              <td><span class="type-badge type-veneno">Veneno</span></td>
-              <td>Estado</td>
-              <td>—</td>
-              <td>90</td>
-            </tr>
-            <tr>
-              <td>MT10</td>
-              <td
-                ><a href="movimiento-detalle.html?id=91" class="move-link"
-                  >Poder Oculto</a
-                ></td
-              >
-              <td><span class="type-badge type-normal">Normal</span></td>
-              <td>Especial</td>
-              <td>60</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>MT11</td>
-              <td
-                ><a href="movimiento-detalle.html?id=241" class="move-link"
-                  >Día Soleado</a
-                ></td
-              >
-              <td><span class="type-badge type-fuego">Fuego</span></td>
-              <td>Estado</td>
-              <td>—</td>
-              <td>—</td>
-            </tr>
-            <tr>
-              <td>MT22</td>
-              <td
-                ><a href="movimiento-detalle.html?id=76" class="move-link"
-                  >Rayo Solar</a
-                ></td
-              >
-              <td><span class="type-badge type-planta">Planta</span></td>
-              <td>Especial</td>
-              <td>120</td>
-              <td>100</td>
-            </tr>
+            {#each pokemon.movimientos_maquina as mov_maq}
+              <tr>
+                <td
+                  ><a href="././catalogo-mov/{mov_maq.id}" class="move-link"
+                    >{mov_maq.nombre}</a
+                  ></td
+                >
+                <td><span class="type-badge type-{mov_maq.tipo.nombre}">{mov_maq.tipo.nombre}</span></td>
+                <td>{mov_maq.categoria}</td>
+                <td>{mov_maq.potencia}</td>
+                <td>{mov_maq.precision}</td>
+              </tr>              
+            {/each}
           </tbody>
         </table>
       </div>
@@ -306,50 +199,20 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td
-                ><a href="movimiento-detalle.html?id=14" class="move-link"
-                  >Malicioso</a
-                ></td
-              >
-              <td><span class="type-badge type-normal">Normal</span></td>
-              <td>Estado</td>
-              <td>—</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td
-                ><a href="movimiento-detalle.html?id=79" class="move-link"
-                  >Megaagotar</a
-                ></td
-              >
-              <td><span class="type-badge type-planta">Planta</span></td>
-              <td>Especial</td>
-              <td>40</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td
-                ><a href="movimiento-detalle.html?id=235" class="move-link"
-                  >Síntesis</a
-                ></td
-              >
-              <td><span class="type-badge type-planta">Planta</span></td>
-              <td>Estado</td>
-              <td>—</td>
-              <td>—</td>
-            </tr>
-            <tr>
-              <td
-                ><a href="movimiento-detalle.html?id=388" class="move-link"
-                  >Bomba Germen</a
-                ></td
-              >
-              <td><span class="type-badge type-planta">Planta</span></td>
-              <td>Físico</td>
-              <td>80</td>
-              <td>100</td>
-            </tr>
+            {#each pokemon.movimientos_huevo as mov_egg}
+              <tr>
+                <td
+                  ><a href="././catalogo-mov/{mov_egg.id}" class="move-link"
+                    >{mov_egg.nombre}</a
+                  ></td
+                >
+                <td><span class="type-badge type-{mov_egg.tipo.nombre}">{mov_egg.tipo.nombre}</span></td>
+                <td>{mov_egg.categoria}</td>
+                <td>{mov_egg.potencia}</td>
+                <td>{mov_egg.precision}</td>
+              </tr>              
+            {/each}
+
           </tbody>
         </table>
       </div>
