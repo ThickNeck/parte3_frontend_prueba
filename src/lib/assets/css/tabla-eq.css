@@ -26,6 +26,7 @@
 .actions-section {
     margin-bottom: 2rem;
     display: flex;
+    gap: 1rem;
     justify-content: flex-end;
 }
 
@@ -51,6 +52,44 @@
     transform: translateY(-0.125rem);
     box-shadow: 0 0.25rem 0.5rem var(--color-shadow);
 }
+
+/* Forms Section */
+.form-section {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.66rem;
+  border: 1px solid #ddd;
+  border-radius: 0.33rem;
+  }
+
+form {
+    display: flex;
+    flex-direction: column;
+  }
+
+label {
+  margin-bottom: 0.33rem;
+  }
+
+input {
+    margin-bottom: 0.66rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.33rem;
+  }
+
+button {
+    padding: 0.66rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 0.33rem;
+    cursor: pointer;
+  }
+
+button:hover {
+    background-color: #45a049;
+  }
 
 /* Table Section */
 .table-section {
