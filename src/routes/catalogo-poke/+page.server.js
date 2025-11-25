@@ -6,6 +6,7 @@ export async function load({ url, fetch }) {
     // --- 1. CONFIGURACIÓN DE PAGINACIÓN ---
     // Obtener el número de página de la URL (ej: ?page=1). Por defecto, es 0.
     const page = parseInt(url.searchParams.get("page") || "0");
+    const query = url.searchParams.get('query') || "";
     const pageSize = 20; // Tamaño de la página (límite de resultados)
     const offset = page * pageSize; // Desplazamiento (offset)
 
@@ -17,6 +18,9 @@ export async function load({ url, fetch }) {
     // Añadir los parámetros de paginación (limit y offset)
     apiUrl.searchParams.set("limit", pageSize.toString());
     apiUrl.searchParams.set("offset", offset.toString());
+    if (query != ""){
+        apiUrl.searchParams.set("nombre", query);
+    }
 
     // --- 3. IMPLEMENTACIÓN DE FILTRADO (Opcional, pero recomendado) ---
     // Aquí puedes añadir lógica para pasar parámetros de filtrado a tu API.
@@ -51,6 +55,7 @@ export async function load({ url, fetch }) {
     return {
         pokemones,
         hasMore,
-        page // Devolvemos la página actual para los controles de navegación
+        page, // Devolvemos la página actual para los controles de navegación
+        query
     };
 }
