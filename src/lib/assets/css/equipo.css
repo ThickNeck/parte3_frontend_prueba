@@ -34,6 +34,21 @@
     color: #666;
 }
 
+/* MODAL */
+
+.add-member-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.add-member-form input {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-light);
+}
+
 /* Team Members Section */
 .team-members-section {
     display: flex;

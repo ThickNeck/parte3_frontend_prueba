@@ -1,9 +1,11 @@
 <script>
+  let showAddForm = false;
 
-  let { data } = $props();
-  let equipo = data.equipo;
-
+  function toggleFormularioAgregar() {
+    showAddForm = !showAddForm;
+  }
 </script>
+
 <main class="main-content">
   <!-- Header Equipo -->
   <section class="team-header">
@@ -21,8 +23,35 @@
       Por cada integrante se podrá activar EDITAR INTEGRANTE y ELIMINAR
       INTEGRANTE.
     </p>
+    <!-- BOTÓN AGREGAR INTEGRANTE (solo si < 6) -->
+    <button class="btn-primary" on:click={toggleFormularioAgregar}>
+      Agregar integrante
+    </button>
   </section>
+<!-- FORMULARIO MODAL PARA AGREGAR INTEGRANTE -->
+  {#if showAddForm}
+  <div class="modal-overlay" on:click={toggleFormularioAgregar}></div>
 
+  <div class="modal">
+    <h3>Agregar integrante</h3>
+
+    <form class="add-member-form">
+      <label>
+        Apodo:
+        <input type="text" />
+      </label>
+
+      <label>
+        ID Pokémon:
+        <input type="number" />
+      </label>
+            <!-- BOTÓN SUBMIT REAL -->
+      <button type="submit" class="btn-submit">
+        Agregar
+      </button>
+    </form>
+  </div>
+  {/if}
   <!-- Sección Integrantes -->
   <section class="team-members-section">
     <!-- Por cada integrante cargado, se inyecta un nuevo artículo -->
