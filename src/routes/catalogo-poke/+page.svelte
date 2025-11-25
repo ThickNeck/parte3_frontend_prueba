@@ -1,4 +1,6 @@
 <script>
+  import Search from "$lib/components/Search.svelte";
+  import { query } from "$app/server";
   let { data } = $props();
   import Pagination from "$lib/components/Pagination2.svelte";
 </script>
@@ -28,12 +30,7 @@
   <!-- Sección de filtros -->
   <section class="filters-section">
     <div class="search-container">
-      <input
-        type="text"
-        class="search-input"
-        placeholder="Buscar por nombre parcial..."
-        aria-label="Buscar Pokémon"
-      />
+      <Search query= {data.query} placeholder="Buscar por nombre parcial"/>
     </div>
 
     <div class="filter-container">
@@ -67,7 +64,7 @@
     <!-- Por cada pokémon cargado, se inyectará una nueva Card -->
     {#each data.pokemones as pokemon}
       <article class="pokemon-card">
-        <a href="/{pokemon.id}" class="pokemon-link">
+        <a href={`/catalogo-poke/${pokemon.id}`} class="pokemon-link">
           <div class="pokemon-header">
             <div class="pokemon-id">#{pokemon.id}</div>
           </div>
