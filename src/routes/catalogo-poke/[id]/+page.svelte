@@ -221,5 +221,5 @@
 </main>
 
 <style>
-  @import '$lib/assets/css/pokemon.css';
+  /*@import '$lib/assets/css/pokemon.css';*/
 </style>

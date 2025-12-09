@@ -117,5 +117,5 @@
 </main>
 
 <style>
-  @import "$lib/assets/css/equipo";
+  /*@import "$lib/assets/css/equipo";*/
 </style>

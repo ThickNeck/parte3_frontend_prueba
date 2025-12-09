@@ -29,5 +29,5 @@
 </div>
 
 <style>
-  @import "$lib/assets/gralStyle.css";
+  /*@import "$lib/assets/gralStyle.css";*/
 </style>

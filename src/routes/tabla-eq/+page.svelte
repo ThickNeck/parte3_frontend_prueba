@@ -110,5 +110,5 @@
 </main>
 
 <style>
-    @import '$lib/assets/css/tabla-eq.css';
+    /*@import '$lib/assets/css/tabla-eq.css';*/
 </style>

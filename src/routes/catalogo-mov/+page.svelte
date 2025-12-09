@@ -86,5 +86,5 @@
 </main>
 
 <style>
-    @import '$lib/assets/css/catalogo-mov.css';
+    /*@import '$lib/assets/css/catalogo-mov.css';*/
 </style>

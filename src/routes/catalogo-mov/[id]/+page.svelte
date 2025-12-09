@@ -119,5 +119,5 @@
 </main>
 
 <style>
-    @import '$lib/assets/css/movimiento.css';
+    /*@import '$lib/assets/css/movimiento.css';*/
 </style>

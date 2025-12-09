@@ -45,5 +45,5 @@
 </main>
 
 <style>
-    @import '$lib/assets/css/index.css';
+   /* @import '$lib/assets/css/index.css';*/
 </style>

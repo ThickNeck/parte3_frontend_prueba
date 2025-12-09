@@ -94,5 +94,5 @@
 </main>
 
 <style>
-  @import "$lib/assets/css/catalogo-poke.css";
+  /*@import "$lib/assets/css/catalogo-poke.css";*/
 </style>
