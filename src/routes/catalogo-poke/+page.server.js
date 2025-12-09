@@ -1,10 +1,10 @@
 import { error } from "@sveltejs/kit";
 
 export async function load() {
-    let url = new URL("http://127.0.0.1:8000/api/pokemon");
-    const response = await fetch(url);
+    let apiUrl = new URL("http://127.0.0.1:8000/api/pokemon");
+    const response = await fetch(apiUrl);
     if (!response.ok){ 
-        error(`Response ststus: ${response.status}`)
+        error(`Response status: ${response.status}`)
     }
 
     let pokemones = await response.json();

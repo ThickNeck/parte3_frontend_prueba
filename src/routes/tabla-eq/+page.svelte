@@ -1,10 +1,19 @@
 <script>
-  export let data;
-  export let form;
+  import { enhance } from '$app/forms';
+
+  let exito = $state(false);
+  function mostrarBannerEqCreado() {
+    exito = true;
+    setTimeout(() => {
+      exito = false;
+    }, 5000);
+  }
+
+  let {data, form} = $props();
 
   // Variables para controlar la visibilidad de los formularios
-  let showCreateForm = false;
-  let showDeleteForm = false;
+  let showCreateForm = $state(false);
+  let showDeleteForm = $state(false);
 
   // Funciones para mostrar y ocultar formularios
   function toggleCreateForm() {
@@ -37,10 +46,16 @@
 
 
   <!-- Formularios de creación y eliminación de equipo -->
+  {#if exito == true}
+    <div class="success-banner">¡Equipo creado con éxito!</div>
+  {/if}
+
   {#if showCreateForm}
     <section class="form-section">
       <h3>Crear Nuevo Equipo</h3>
-      <form method="POST" action="?/create">
+      <form method="POST" action="?/create" use:enhance={() => {
+        mostrarBannerEqCreado();
+      }}>
         <label for="team-name">Nombre del Equipo</label>
         <input type="text" id="team-name" name="nombre" placeholder="Nombre del equipo" required>
         <button class="btn" type="submit">Crear Equipo</button>

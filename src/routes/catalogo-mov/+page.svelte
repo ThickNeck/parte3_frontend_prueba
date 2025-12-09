@@ -53,7 +53,7 @@
         </div>
     </section>
 
-    <!-- Lista MOvimientos -->
+    <!-- Lista Movimientos -->
     <section class="moves-list">
         <!-- Por cada movimiento cargado, se inyectará una card -->
 
